@@ -234,4 +234,21 @@ had to be added in a second pass.
 
 ---
 
+## Problem 11 — Push to a Public GitHub Repository
+
+**Prompt 1 (my words):**
+> Please push my code to a public GitHub repository so graders will be able to clone it. Do not push my real .env to the GitHub repo. Do include both database files under data/ (the original and my working copy) so graders can run everything.
+>
+> _(attached: a screenshot of the expected file layout)_
+
+**Follow-up prompt (my words):**
+> it's created, go ahead and push
+
+**What was lacking after the first prompt:** The repository could not be created from here — there
+is no `gh` CLI on this machine and the only GitHub credential is one in the keychain that should not
+be read out and used directly — so the work had to stop at a finished local commit until I created
+the empty public repo myself and said so.
+
+---
+
 <!-- New problem sections get appended here as each problem is completed. -->
