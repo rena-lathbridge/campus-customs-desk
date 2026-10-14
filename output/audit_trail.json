@@ -1,0 +1,2232 @@
+{
+  "runs": [
+    {
+      "recorded_at": "2026-10-10T20:53:06+00:00",
+      "shop_date": "2026-08-31",
+      "model": "gpt-6-luna",
+      "database_reset_before_run": true,
+      "starting_checking_balance": 3400.0,
+      "ending_checking_balance": 160.0,
+      "tickets": [
+        {
+          "ticket_id": 101,
+          "run_id": "cfe2c469",
+          "final_status": "open",
+          "decision": "Do not promise the tee now: size S is out of stock and the restock date is unconfirmed. Recommend paying overdue invoice 501 from checking only after a human approves it; keep rent reserved, and make no payment until then.",
+          "delegations": [
+            {
+              "from": "boss",
+              "to": "Inventory",
+              "asked": "Ticket 101: Is 1 CC-TEE-WHITE in size S available, and what replenishment timing can be supported?",
+              "learned": "There are zero in size S. Bulldog Print Co's apparel-reprint specialty may fit, and its listed lead time is five days, but supplier linkage and the tee's replenishment timing are unconfirmed."
+            },
+            {
+              "from": "boss",
+              "to": "Accounting",
+              "asked": "For ticket 101 and linked invoice 501, is it unpaid, and what remains after rent and all open bills if it is paid?",
+              "learned": "Invoice 501 is open for $840 and overdue. Checking has $3,400; rent and all open bills are covered, leaving $160 available. A human approver is required; payment is only recommended."
+            },
+            {
+              "from": "boss",
+              "to": "Facilities",
+              "asked": "For ticket 101, confirm lease 1 rent amount and timing and whether it affects paying invoice 501.",
+              "learned": "Rent is $2,400 and due in two days. It remains covered if invoice 501 is paid, with $160 left after commitments; invoice 501 is three days overdue."
+            },
+            {
+              "from": "boss",
+              "to": "Customer Service",
+              "asked": "Draft a truthful reply for the request for one size S CC-TEE-WHITE, without promising the possible five-day lead time.",
+              "learned": "Drafted a response explaining there is no small white tee or confirmed restock date, and offering other sizes."
+            }
+          ],
+          "mcp_tools_by_agent": {
+            "boss": [
+              "get_ticket",
+              "list_tickets"
+            ],
+            "inventory": [
+              "get_ticket",
+              "check_stock",
+              "list_vendors"
+            ],
+            "accounting": [
+              "get_ticket",
+              "list_open_invoices",
+              "get_rent_due_and_cash_position"
+            ],
+            "facilities": [
+              "get_ticket",
+              "get_rent_due_and_cash_position"
+            ],
+            "customer_service": [
+              "get_ticket",
+              "check_stock"
+            ]
+          }
+        },
+        {
+          "ticket_id": 102,
+          "run_id": "1188f2e6",
+          "final_status": "open",
+          "decision": "Recommend paying the $2,400 rent for lease 1 from checking by September 2, 2026. No payment has been made; a named human must approve it first.",
+          "delegations": [
+            {
+              "from": "boss",
+              "to": "Facilities",
+              "asked": "Ticket 102, rent notice for lease 1: what rent amount and due timing should we act on, and anything about this lease we need to know?",
+              "learned": "Confirmed rent is $2,400, due September 2, 2026, and is not marked paid."
+            },
+            {
+              "from": "boss",
+              "to": "Accounting",
+              "asked": "Ticket 102, lease 1 rent notice: what amount should be paid, and how much is genuinely available after rent and all unpaid bills? No human approver is named, so do not pay; advise what approval is needed.",
+              "learned": "Confirmed the rent payment is covered after accounting for the open $840 invoice, with $160 remaining; a named human must approve paying $2,400 from checking toward lease 1."
+            }
+          ],
+          "mcp_tools_by_agent": {
+            "boss": [
+              "get_ticket",
+              "list_tickets"
+            ],
+            "facilities": [
+              "get_ticket",
+              "get_rent_due_and_cash_position"
+            ],
+            "accounting": [
+              "get_ticket",
+              "get_rent_due_and_cash_position"
+            ]
+          }
+        },
+        {
+          "ticket_id": 103,
+          "run_id": "5c9609f5",
+          "final_status": "resolved",
+          "decision": "Do not approve a bulk discount now. Offer the 8 medium navy hoodies currently in stock at the $58 list price, and do not promise the other 12 or a restock date. Any discounted quote requires a human to approve a specific price at or above the $22 cost floor.",
+          "delegations": [
+            {
+              "from": "boss",
+              "to": "Inventory",
+              "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. How many are physically on the shelf, and if fewer than 20, what replenishment timing can we confirm?",
+              "learned": "8 medium navy hoodies are on the shelf; that leaves 12 beyond current stock. A possible apparel-reprint supplier has a 5-day lead time, but the supplier-to-hoodie link and arrival timing are unconfirmed."
+            },
+            {
+              "from": "boss",
+              "to": "Accounting",
+              "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M, with a bulk discount. What are the current list price and unit-cost floor, and what discounted unit price (if any) can be recommended without selling below cost? Please include the 20-unit totals.",
+              "learned": "List price is $58 per hoodie and unit-cost floor is $22. Accounting could not support choosing a particular discounted price above the floor."
+            },
+            {
+              "from": "boss",
+              "to": "Customer Service",
+              "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. With 8 in stock, no confirmed restock date, and no approved specific discount (floor $22, list $58), draft a concise customer reply that does not promise unavailable stock or an unsupported discount.",
+              "learned": "Drafted a courteous reply explaining that all 20 and a restock date cannot be promised, and that no bulk discount is approved."
+            }
+          ],
+          "mcp_tools_by_agent": {
+            "boss": [
+              "get_ticket"
+            ],
+            "inventory": [
+              "get_ticket",
+              "check_stock",
+              "list_vendors"
+            ],
+            "accounting": [
+              "get_ticket",
+              "get_price_and_floor"
+            ],
+            "customer_service": [
+              "get_ticket",
+              "get_price_and_floor",
+              "check_stock"
+            ]
+          }
+        }
+      ],
+      "human_approvals": [
+        {
+          "approval_id": 1,
+          "ticket_id": 101,
+          "approved_by": "Rena Lathbridge",
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "balance_before": 3400.0,
+          "balance_after": 2560.0,
+          "payment_id": 1
+        },
+        {
+          "approval_id": 2,
+          "ticket_id": 102,
+          "approved_by": "Rena Lathbridge",
+          "kind": "rent",
+          "ref_id": 1,
+          "amount": 2400.0,
+          "balance_before": 2560.0,
+          "balance_after": 160.0,
+          "payment_id": 2
+        }
+      ],
+      "payments_in_database": [
+        {
+          "id": 1,
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "Rena Lathbridge"
+        },
+        {
+          "id": 2,
+          "kind": "rent",
+          "ref_id": 1,
+          "amount": 2400.0,
+          "account": "checking",
+          "paid_at": "2026-08-31",
+          "approved_by": "Rena Lathbridge"
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "at": "2026-10-10T20:50:40+00:00",
+          "run_id": "",
+          "ticket_id": null,
+          "kind": "reset",
+          "agent": "human",
+          "tool": "",
+          "summary": "Database reset to the original seed values.",
+          "detail": {}
+        },
+        {
+          "seq": 2,
+          "at": "2026-10-10T20:50:40+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "run_started",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Running the team on ticket 101.",
+          "detail": {
+            "model": "gpt-6-luna",
+            "max_depth": 3
+          }
+        },
+        {
+          "seq": 3,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "boss",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 4,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_started",
+          "agent": "inventory",
+          "tool": "",
+          "summary": "asked: Ticket 101: requester needs 1 CC-TEE-WHITE in size S. Is it physically available, and if not what replenishment timing can we support from recorded information?",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "inventory"
+            ]
+          }
+        },
+        {
+          "seq": 5,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_started",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "asked: Ticket 101 concerns 1 CC-TEE-WHITE, size S, and links invoice 501. Is invoice 501 unpaid, and what is genuinely available after rent and all open bills? Please include the invoice ",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "accounting"
+            ]
+          }
+        },
+        {
+          "seq": 6,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "boss",
+          "tool": "list_tickets",
+          "summary": "called list_tickets(status='open')",
+          "detail": {
+            "arguments": {
+              "status": "open"
+            }
+          }
+        },
+        {
+          "seq": 7,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 8,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 9,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "list_open_invoices",
+          "summary": "called list_open_invoices()",
+          "detail": {
+            "arguments": {}
+          }
+        },
+        {
+          "seq": 10,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_rent_due_and_cash_position",
+          "summary": "called get_rent_due_and_cash_position()",
+          "detail": {
+            "arguments": {}
+          }
+        },
+        {
+          "seq": 11,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "check_stock",
+          "summary": "called check_stock(sku='CC-TEE-WHITE', size='S')",
+          "detail": {
+            "arguments": {
+              "sku": "CC-TEE-WHITE",
+              "size": "S"
+            }
+          }
+        },
+        {
+          "seq": 12,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "list_vendors",
+          "summary": "called list_vendors()",
+          "detail": {
+            "arguments": {}
+          }
+        },
+        {
+          "seq": 13,
+          "at": "2026-10-10T20:50:43+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_replied",
+          "agent": "inventory",
+          "tool": "",
+          "summary": "No \u2014 there are zero CC-TEE-WHITE tees in size S on the shelf, in Aisle B. The recorded supplier list includes Bulldog Print Co, whose apparel-reprint specialty looks like a possible match and whose listed lead time is 5 days. That is only a specialty-based inference, not a confirmed replenishment time for this tee.",
+          "detail": {
+            "answer": "No \u2014 there are zero CC-TEE-WHITE tees in size S on the shelf, in Aisle B. The recorded supplier list includes Bulldog Print Co, whose apparel-reprint specialty looks like a possible match and whose listed lead time is 5 days. That is only a specialty-based inference, not a confirmed replenishment time for this tee.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-TEE-WHITE",
+                "means": "Ticket 101 requests this tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "S",
+                "means": "The requested size is small."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "1",
+                "means": "The requester needs one tee."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "0",
+                "means": "There are no size S tees on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "location",
+                "value": "Aisle B",
+                "means": "The size S tee's listed shelf location is Aisle B."
+              },
+              {
+                "table": "vendors",
+                "field_name": "name",
+                "value": "Bulldog Print Co",
+                "means": "This supplier is listed in the vendor records."
+              },
+              {
+                "table": "vendors",
+                "field_name": "specialty",
+                "value": "apparel reprint",
+                "means": "The supplier specialty seems relevant to a tee, but does not establish that they supply this specific item."
+              },
+              {
+                "table": "vendors",
+                "field_name": "lead_days",
+                "value": "5",
+                "means": "The supplier's listed lead time is five days, not a confirmed delivery time for this tee."
+              }
+            ],
+            "actions_taken": [],
+            "money": null,
+            "blocked_by": "",
+            "unknown": "The database does not map this tee to a supplier, so it cannot confirm that Bulldog Print Co supplies it or that a replenishment would arrive in five days.",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 14,
+          "at": "2026-10-10T20:50:58+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_replied",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "Invoice 501 is unpaid and overdue: $840 is owed to Bulldog Print Co. After reserving rent and all open bills, only $160 is genuinely available. Paying the invoice would reduce checking cash by $840, from $3,400 to $2,560; after setting aside the $2,400 rent, $160 would remain. The shop can cover it, but no approver has been named, so I can recommend payment for human approval but cannot make it.",
+          "detail": {
+            "answer": "Invoice 501 is unpaid and overdue: $840 is owed to Bulldog Print Co. After reserving rent and all open bills, only $160 is genuinely available. Paying the invoice would reduce checking cash by $840, from $3,400 to $2,560; after setting aside the $2,400 rent, $160 would remain. The shop can cover it, but no approver has been named, so I can recommend payment for human approval but cannot make it.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "id",
+                "value": "101",
+                "means": "Ticket 101 is the request linked to invoice 501."
+              },
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-TEE-WHITE",
+                "means": "The ticket concerns a white tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "S",
+                "means": "The requested tee is size S."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "1",
+                "means": "The ticket requests one tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "invoice_id",
+                "value": "501",
+                "means": "Ticket 101 links to invoice 501."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "Invoice 501 is unpaid."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "Invoice 501 is for $840."
+              },
+              {
+                "table": "invoices",
+                "field_name": "vendor_name",
+                "value": "Bulldog Print Co",
+                "means": "Bulldog Print Co is owed for the invoice."
+              },
+              {
+                "table": "invoices",
+                "field_name": "overdue",
+                "value": "true",
+                "means": "Invoice 501 is overdue."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "Checking currently holds $3,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The rent commitment is $2,400."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After rent and all open bills are counted, $160 remains available."
+              }
+            ],
+            "actions_taken": [],
+            "money": {
+              "kind": "invoice",
+              "ref_id": 501,
+              "account": "checking",
+              "what": "Pay Bulldog Print Co invoice 501, subject to human approval.",
+              "amount": 840.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "blocked_by": "Waiting on a named human approver; no payment was made.",
+            "unknown": "",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 15,
+          "at": "2026-10-10T20:51:01+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_started",
+          "agent": "facilities",
+          "tool": "",
+          "summary": "asked: Ticket 101: with the linked recommendation to pay invoice 501 ($840), please confirm lease 1's rent due timing and amount, and whether any timing concern changes the recommendation",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "facilities"
+            ]
+          }
+        },
+        {
+          "seq": 16,
+          "at": "2026-10-10T20:51:01+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_started",
+          "agent": "customer_service",
+          "tool": "",
+          "summary": "asked: Ticket 101: requester Tauhid Zaman needs 1 CC-TEE-WHITE in size S. Inventory found zero on shelf and only a possible, unconfirmed 5-day vendor lead time. Draft a truthful message t",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "customer_service"
+            ]
+          }
+        },
+        {
+          "seq": 17,
+          "at": "2026-10-10T20:51:03+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "facilities",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 18,
+          "at": "2026-10-10T20:51:03+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "facilities",
+          "tool": "get_rent_due_and_cash_position",
+          "summary": "called get_rent_due_and_cash_position(lease_id=1)",
+          "detail": {
+            "arguments": {
+              "lease_id": 1
+            }
+          }
+        },
+        {
+          "seq": 19,
+          "at": "2026-10-10T20:51:07+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_started",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "asked: Ticket 101: linked recommendation is to pay invoice 501 for $840, tied to CC-TEE-WHITE, size S, qty 1. With lease 1 rent of $2,400 due in 2 days and invoice 501 already overdue, is",
+          "detail": {
+            "depth": 2,
+            "chain": [
+              "boss",
+              "facilities",
+              "accounting"
+            ]
+          }
+        },
+        {
+          "seq": 20,
+          "at": "2026-10-10T20:51:07+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "customer_service",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 21,
+          "at": "2026-10-10T20:51:09+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=101)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 101
+            }
+          }
+        },
+        {
+          "seq": 22,
+          "at": "2026-10-10T20:51:09+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "list_open_invoices",
+          "summary": "called list_open_invoices()",
+          "detail": {
+            "arguments": {}
+          }
+        },
+        {
+          "seq": 23,
+          "at": "2026-10-10T20:51:09+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_rent_due_and_cash_position",
+          "summary": "called get_rent_due_and_cash_position(lease_id=1)",
+          "detail": {
+            "arguments": {
+              "lease_id": 1
+            }
+          }
+        },
+        {
+          "seq": 24,
+          "at": "2026-10-10T20:51:09+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "tool_call",
+          "agent": "customer_service",
+          "tool": "check_stock",
+          "summary": "called check_stock(sku='CC-TEE-WHITE')",
+          "detail": {
+            "arguments": {
+              "sku": "CC-TEE-WHITE"
+            }
+          }
+        },
+        {
+          "seq": 25,
+          "at": "2026-10-10T20:51:16+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_replied",
+          "agent": "customer_service",
+          "tool": "",
+          "summary": "Hi Tauhid \u2014 we don't have the white tee in small right now. We don't have a confirmed restock date, so I can't promise when it will be available. If another size works, we have it in medium, large, and extra large.",
+          "detail": {
+            "answer": "Hi Tauhid \u2014 we don't have the white tee in small right now. We don't have a confirmed restock date, so I can't promise when it will be available. If another size works, we have it in medium, large, and extra large.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "requester",
+                "value": "Tauhid Zaman",
+                "means": "This is the requester being addressed."
+              },
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-TEE-WHITE",
+                "means": "The request is for the white tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "S",
+                "means": "The requested size is small."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "0",
+                "means": "There are no white tees in small on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "5",
+                "means": "There are white tees in medium on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "3",
+                "means": "There are white tees in large on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "2",
+                "means": "There are white tees in extra large on the shelf."
+              }
+            ],
+            "actions_taken": [],
+            "money": null,
+            "blocked_by": "Needs the Boss's approval before sending.",
+            "unknown": "The database does not confirm a supplier or a replenishment date. The possible five-day lead time is unconfirmed, so it is not included as a promise.",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 26,
+          "at": "2026-10-10T20:51:16+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_replied",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "Yes. The checking cash covers rent and invoice 501 together, leaving $160 after both are reserved. Rent is due in 2 days, while invoice 501 is already 3 days overdue, so timing makes this tight but does not make the invoice unaffordable: paying it now still leaves the rent covered. I recommend proceeding only with a human\u2019s approval. No payment was made.",
+          "detail": {
+            "answer": "Yes. The checking cash covers rent and invoice 501 together, leaving $160 after both are reserved. Rent is due in 2 days, while invoice 501 is already 3 days overdue, so timing makes this tight but does not make the invoice unaffordable: paying it now still leaves the rent covered. I recommend proceeding only with a human\u2019s approval. No payment was made.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "id",
+                "value": "101",
+                "means": "This is the ticket being reviewed."
+              },
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-TEE-WHITE",
+                "means": "Ticket 101 links to the white tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "S",
+                "means": "Ticket 101 specifies size S."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "1",
+                "means": "Ticket 101 is for one tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "invoice_id",
+                "value": "501",
+                "means": "Ticket 101 links to invoice 501."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "Lease 1 rent is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "days_until_due",
+                "value": "2",
+                "means": "Rent is due in 2 days."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "The checking account holds $3,400."
+              },
+              {
+                "table": "invoices",
+                "field_name": "invoice_id",
+                "value": "501",
+                "means": "This is the invoice being considered."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "Invoice 501 is for $840."
+              },
+              {
+                "table": "invoices",
+                "field_name": "days_until_due",
+                "value": "-3",
+                "means": "Invoice 501 is 3 days overdue."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "Invoice 501 remains unpaid."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "total_committed",
+                "value": "3240.0",
+                "means": "Rent and all open invoices together account for $3,240."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After reserving rent and all open bills, $160 remains."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "all_commitments_covered_by_cash",
+                "value": "true",
+                "means": "The checking balance covers rent and all open bills."
+              }
+            ],
+            "actions_taken": [],
+            "money": {
+              "kind": "invoice",
+              "ref_id": 501,
+              "account": "checking",
+              "what": "Pay overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+              "amount": 840.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "blocked_by": "Waiting on a named human approver; no approver was provided, so I did not pay the invoice.",
+            "unknown": "",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 27,
+          "at": "2026-10-10T20:51:22+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "agent_replied",
+          "agent": "facilities",
+          "tool": "",
+          "summary": "Lease 1\u2019s Chapel Street rent is $2,400, due September 2\u2014two days after the shop\u2019s August 31 date. Invoice 501 is already three days overdue. Timing makes this tight, but it does not change the recommendation: the checking balance covers rent and all open bills, including the $840 invoice, with $160 left after those commitments. Pay the invoice only after a human approves it; rent stays reserved fi",
+          "detail": {
+            "answer": "Lease 1\u2019s Chapel Street rent is $2,400, due September 2\u2014two days after the shop\u2019s August 31 date. Invoice 501 is already three days overdue. Timing makes this tight, but it does not change the recommendation: the checking balance covers rent and all open bills, including the $840 invoice, with $160 left after those commitments. Pay the invoice only after a human approves it; rent stays reserved first.",
+            "facts": [
+              {
+                "table": "leases",
+                "field_name": "lease_id",
+                "value": "1",
+                "means": "This is the lease whose rent timing was checked."
+              },
+              {
+                "table": "leases",
+                "field_name": "space_name",
+                "value": "Chapel Street shop",
+                "means": "Lease 1 covers the Chapel Street shop."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The rent obligation is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "next_due",
+                "value": "2026-09-02",
+                "means": "The next rent due date is September 2, 2026."
+              },
+              {
+                "table": "leases",
+                "field_name": "days_until_due",
+                "value": "2",
+                "means": "Rent is due in two days according to the shop calendar."
+              },
+              {
+                "table": "desk",
+                "field_name": "date_today",
+                "value": "2026-08-31",
+                "means": "The shop calendar date used for the timing is August 31, 2026."
+              },
+              {
+                "table": "invoices",
+                "field_name": "invoice_id",
+                "value": "501",
+                "means": "This is the invoice considered in the linked recommendation."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "Invoice 501 is for $840."
+              },
+              {
+                "table": "invoices",
+                "field_name": "days_until_due",
+                "value": "-3",
+                "means": "Invoice 501 is three days overdue."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "Invoice 501 remains unpaid."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "The checking account balance is $3,400."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "total_committed",
+                "value": "3240.0",
+                "means": "Rent and all open invoices together account for $3,240."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After reserving rent and all open bills, $160 remains."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "all_commitments_covered_by_cash",
+                "value": "true",
+                "means": "The checking balance covers rent and all open bills."
+              }
+            ],
+            "actions_taken": [],
+            "money": {
+              "kind": "invoice",
+              "ref_id": 501,
+              "account": "checking",
+              "what": "Pay overdue invoice 501 while keeping lease 1 rent reserved.",
+              "amount": 840.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "blocked_by": "Waiting for a named human approver before paying invoice 501.",
+            "unknown": "",
+            "consulted": [
+              "Accounting"
+            ]
+          }
+        },
+        {
+          "seq": 28,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "decision",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Do not promise the tee now: size S is out of stock and the restock date is unconfirmed. Recommend paying overdue invoice 501 from checking only after a human approves it; keep rent reserved, and make no payment until then.",
+          "detail": {
+            "ticket_id": 101,
+            "decision": "Do not promise the tee now: size S is out of stock and the restock date is unconfirmed. Recommend paying overdue invoice 501 from checking only after a human approves it; keep rent reserved, and make no payment until then.",
+            "reply_to_requester": "Hi Tauhid \u2014 we don't have the white tee in small right now, and we don't have a confirmed restock date, so I can't promise when it will be available. If another size works, we currently have medium, large, and extra large.",
+            "rationale": "Ticket 101 requests one white tee in size S, and Inventory confirmed none are on the shelf. Bulldog Print Co has a listed apparel-reprint specialty and a five-day lead time, but no record confirms that it supplies this tee, so that timing is not a reliable restock promise. Invoice 501 for $840 to Bulldog Print Co is open and three days overdue. Rent of $2,400 is due in two days. Accounting says rent and all open bills are covered, with only $160 available after those commitments. Paying invoice 501 is therefore affordable while keeping rent reserved, but needs human approval; no payment has been made.",
+            "steps": [
+              {
+                "agent": "Inventory",
+                "asked": "Ticket 101: Is 1 CC-TEE-WHITE in size S available, and what replenishment timing can be supported?",
+                "learned": "There are zero in size S. Bulldog Print Co's apparel-reprint specialty may fit, and its listed lead time is five days, but supplier linkage and the tee's replenishment timing are unconfirmed."
+              },
+              {
+                "agent": "Accounting",
+                "asked": "For ticket 101 and linked invoice 501, is it unpaid, and what remains after rent and all open bills if it is paid?",
+                "learned": "Invoice 501 is open for $840 and overdue. Checking has $3,400; rent and all open bills are covered, leaving $160 available. A human approver is required; payment is only recommended."
+              },
+              {
+                "agent": "Facilities",
+                "asked": "For ticket 101, confirm lease 1 rent amount and timing and whether it affects paying invoice 501.",
+                "learned": "Rent is $2,400 and due in two days. It remains covered if invoice 501 is paid, with $160 left after commitments; invoice 501 is three days overdue."
+              },
+              {
+                "agent": "Customer Service",
+                "asked": "Draft a truthful reply for the request for one size S CC-TEE-WHITE, without promising the possible five-day lead time.",
+                "learned": "Drafted a response explaining there is no small white tee or confirmed restock date, and offering other sizes."
+              }
+            ],
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-TEE-WHITE",
+                "means": "Ticket 101 is for the white tee."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "S",
+                "means": "The requester wants size S."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "1",
+                "means": "The requester wants one tee."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "0",
+                "means": "No size S white tees are on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "5",
+                "means": "Five white tees in medium are on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "3",
+                "means": "Three white tees in large are on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "2",
+                "means": "Two white tees in extra large are on the shelf."
+              },
+              {
+                "table": "vendors",
+                "field_name": "name",
+                "value": "Bulldog Print Co",
+                "means": "This supplier is listed in the vendor records, but is not confirmed as the supplier for this tee."
+              },
+              {
+                "table": "vendors",
+                "field_name": "specialty",
+                "value": "apparel reprint",
+                "means": "The specialty may match, but does not establish that the vendor supplies this tee."
+              },
+              {
+                "table": "vendors",
+                "field_name": "lead_days",
+                "value": "5",
+                "means": "The listed lead time is five days, not a confirmed delivery time for this tee."
+              },
+              {
+                "table": "invoices",
+                "field_name": "invoice_id",
+                "value": "501",
+                "means": "This is the invoice linked to ticket 101."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "Invoice 501 is for $840."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "Invoice 501 remains unpaid."
+              },
+              {
+                "table": "invoices",
+                "field_name": "vendor_name",
+                "value": "Bulldog Print Co",
+                "means": "The invoice is owed to Bulldog Print Co."
+              },
+              {
+                "table": "invoices",
+                "field_name": "days_until_due",
+                "value": "-3",
+                "means": "Invoice 501 is three days overdue."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "Checking holds $3,400 before any payment."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The rent obligation is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "next_due",
+                "value": "2026-09-02",
+                "means": "Lease 1 rent is due September 2, 2026."
+              },
+              {
+                "table": "leases",
+                "field_name": "days_until_due",
+                "value": "2",
+                "means": "Rent is due in two days on the shop calendar."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After rent and every open bill, $160 remains available."
+              }
+            ],
+            "money": {
+              "kind": "invoice",
+              "ref_id": 501,
+              "account": "checking",
+              "what": "Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+              "amount": 840.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "needs_human_approval": true,
+            "risks": [
+              "Only $160 remains available after rent and all open bills; there is little room for an unexpected cost.",
+              "Paying invoice 501 does not establish that Bulldog Print Co supplies this specific tee or that restocking will take five days.",
+              "The customer cannot be promised a restock date."
+            ],
+            "unresolved": "No human approver has been named, so invoice 501 remains unpaid pending approval. The database does not record which supplier supplies CC-TEE-WHITE or a confirmed restock date."
+          }
+        },
+        {
+          "seq": 29,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "decision",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Payment proposed, awaiting a human: Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+          "detail": {
+            "id": 1,
+            "run_id": "cfe2c469",
+            "ticket_id": 101,
+            "kind": "invoice",
+            "ref_id": 501,
+            "amount": 840.0,
+            "account": "checking",
+            "what": "Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+            "created_at": "2026-10-10T20:51:35+00:00",
+            "status": "awaiting_approval",
+            "decided_by": "",
+            "decided_at": "",
+            "result": {}
+          }
+        },
+        {
+          "seq": 30,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "run_started",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Running the team on ticket 102.",
+          "detail": {
+            "model": "gpt-6-luna",
+            "max_depth": 3
+          }
+        },
+        {
+          "seq": 31,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "boss",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=102)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 102
+            }
+          }
+        },
+        {
+          "seq": 32,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "agent_started",
+          "agent": "facilities",
+          "tool": "",
+          "summary": "asked: Ticket 102, rent notice for lease 1: what rent amount and due timing should we act on, and anything about this lease we need to know?",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "facilities"
+            ]
+          }
+        },
+        {
+          "seq": 33,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "agent_started",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "asked: Ticket 102, lease 1 rent notice: what amount should be paid, and how much is genuinely available after rent and all unpaid bills? No human approver is named, so do not pay; advise ",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "accounting"
+            ]
+          }
+        },
+        {
+          "seq": 34,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "boss",
+          "tool": "list_tickets",
+          "summary": "called list_tickets(status='open')",
+          "detail": {
+            "arguments": {
+              "status": "open"
+            }
+          }
+        },
+        {
+          "seq": 35,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "facilities",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=102)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 102
+            }
+          }
+        },
+        {
+          "seq": 36,
+          "at": "2026-10-10T20:51:35+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "facilities",
+          "tool": "get_rent_due_and_cash_position",
+          "summary": "called get_rent_due_and_cash_position(lease_id=1)",
+          "detail": {
+            "arguments": {
+              "lease_id": 1
+            }
+          }
+        },
+        {
+          "seq": 37,
+          "at": "2026-10-10T20:51:36+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=102)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 102
+            }
+          }
+        },
+        {
+          "seq": 38,
+          "at": "2026-10-10T20:51:36+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_rent_due_and_cash_position",
+          "summary": "called get_rent_due_and_cash_position(lease_id=1)",
+          "detail": {
+            "arguments": {
+              "lease_id": 1
+            }
+          }
+        },
+        {
+          "seq": 39,
+          "at": "2026-10-10T20:51:41+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "agent_replied",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "Ticket 102 is for lease 1. The rent amount to pay is $2,400, due September 2, 2026. After reserving rent and the unpaid invoice, $160 remains genuinely available. The rent is covered, but no payment was made: a named human must approve paying $2,400 from checking toward lease 1.",
+          "detail": {
+            "answer": "Ticket 102 is for lease 1. The rent amount to pay is $2,400, due September 2, 2026. After reserving rent and the unpaid invoice, $160 remains genuinely available. The rent is covered, but no payment was made: a named human must approve paying $2,400 from checking toward lease 1.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "id",
+                "value": "102",
+                "means": "This is the rent notice being handled."
+              },
+              {
+                "table": "tickets",
+                "field_name": "lease_id",
+                "value": "1",
+                "means": "The notice concerns lease 1."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The rent amount to pay is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "next_due",
+                "value": "2026-09-02",
+                "means": "Rent is due September 2, 2026."
+              },
+              {
+                "table": "leases",
+                "field_name": "already_paid",
+                "value": "false",
+                "means": "The rent has not already been paid."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "The checking account balance is $3,400."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "There is an unpaid invoice for $840, which is included in commitments."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "The $840 invoice remains unpaid."
+              },
+              {
+                "table": "invoices",
+                "field_name": "overdue",
+                "value": "true",
+                "means": "The invoice is overdue."
+              },
+              {
+                "table": "leases",
+                "field_name": "rent_total",
+                "value": "2400.0",
+                "means": "Rent is counted among the commitments against cash."
+              },
+              {
+                "table": "invoices",
+                "field_name": "open_invoices_total",
+                "value": "840.0",
+                "means": "The open invoice total is counted against cash."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After rent and all unpaid bills are counted, $160 remains available."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "all_commitments_covered_by_cash",
+                "value": "true",
+                "means": "The account can cover rent and all currently open invoices."
+              }
+            ],
+            "actions_taken": [],
+            "money": {
+              "kind": "rent",
+              "ref_id": 1,
+              "account": "checking",
+              "what": "Pay the rent for lease 1",
+              "amount": 2400.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "blocked_by": "Waiting on a named human approver to approve the $2,400 rent payment. No approver was named, so no payment was made.",
+            "unknown": "",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 40,
+          "at": "2026-10-10T20:51:41+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "agent_replied",
+          "agent": "facilities",
+          "tool": "",
+          "summary": "Ticket 102\u2019s note says rent is due in two days, and it matches the lease: the Chapel Street shop\u2019s $2,400 rent is due September 2. The lease is with Elm City Properties and is not marked paid. Rent must be treated as already committed. After rent and the open supplier bill are counted, $160 remains in checking. The supplier bill is overdue; any rent payment still needs human approval.",
+          "detail": {
+            "answer": "Ticket 102\u2019s note says rent is due in two days, and it matches the lease: the Chapel Street shop\u2019s $2,400 rent is due September 2. The lease is with Elm City Properties and is not marked paid. Rent must be treated as already committed. After rent and the open supplier bill are counted, $160 remains in checking. The supplier bill is overdue; any rent payment still needs human approval.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "notes",
+                "value": "Email: shop rent due in 2 days.",
+                "means": "The rent notice says payment is due in two days."
+              },
+              {
+                "table": "leases",
+                "field_name": "space_name",
+                "value": "Chapel Street shop",
+                "means": "This is the space covered by lease 1."
+              },
+              {
+                "table": "leases",
+                "field_name": "landlord",
+                "value": "Elm City Properties",
+                "means": "Elm City Properties is the landlord."
+              },
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The monthly rent is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "next_due",
+                "value": "2026-09-02",
+                "means": "The lease lists September 2, 2026 as the next rent due date."
+              },
+              {
+                "table": "leases",
+                "field_name": "days_until_due",
+                "value": "2",
+                "means": "The lease says rent is due in two days."
+              },
+              {
+                "table": "leases",
+                "field_name": "already_paid",
+                "value": "false",
+                "means": "The rent has not been marked paid."
+              },
+              {
+                "table": "desk",
+                "field_name": "date_today",
+                "value": "2026-08-31",
+                "means": "The shop's date for calculating the rent timing is August 31, 2026."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "Checking has $3,400."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "The open supplier bill is $840."
+              },
+              {
+                "table": "invoices",
+                "field_name": "days_until_due",
+                "value": "-3",
+                "means": "The supplier bill is three days overdue."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "The supplier bill remains unpaid."
+              },
+              {
+                "table": "get_rent_due_and_cash_position",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After rent and all open bills are counted, $160 remains available."
+              }
+            ],
+            "actions_taken": [],
+            "money": {
+              "kind": "rent",
+              "ref_id": 1,
+              "account": "checking",
+              "what": "Pay lease 1 rent to Elm City Properties",
+              "amount": 2400.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "blocked_by": "",
+            "unknown": "",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 41,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "decision",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Recommend paying the $2,400 rent for lease 1 from checking by September 2, 2026. No payment has been made; a named human must approve it first.",
+          "detail": {
+            "ticket_id": 102,
+            "decision": "Recommend paying the $2,400 rent for lease 1 from checking by September 2, 2026. No payment has been made; a named human must approve it first.",
+            "reply_to_requester": "We have your rent notice. The $2,400 rent for the Chapel Street shop is due September 2, 2026. Payment is awaiting approval by a named human; it has not yet been sent.",
+            "rationale": "The lease rent is $2,400 and is due in two days. Checking has $3,400, but the shop also has an unpaid $840 supplier invoice that is three days overdue. After reserving rent and the open bill, $160 remains. The rent is covered, but payment cannot be made without a named human approver.",
+            "steps": [
+              {
+                "agent": "Facilities",
+                "asked": "Ticket 102, rent notice for lease 1: what rent amount and due timing should we act on, and anything about this lease we need to know?",
+                "learned": "Confirmed rent is $2,400, due September 2, 2026, and is not marked paid."
+              },
+              {
+                "agent": "Accounting",
+                "asked": "Ticket 102, lease 1 rent notice: what amount should be paid, and how much is genuinely available after rent and all unpaid bills? No human approver is named, so do not pay; advise what approval is needed.",
+                "learned": "Confirmed the rent payment is covered after accounting for the open $840 invoice, with $160 remaining; a named human must approve paying $2,400 from checking toward lease 1."
+              }
+            ],
+            "facts": [
+              {
+                "table": "leases",
+                "field_name": "monthly_rent",
+                "value": "2400.0",
+                "means": "The amount recommended for payment is $2,400."
+              },
+              {
+                "table": "leases",
+                "field_name": "next_due",
+                "value": "2026-09-02",
+                "means": "Rent is due September 2, 2026."
+              },
+              {
+                "table": "leases",
+                "field_name": "already_paid",
+                "value": "false",
+                "means": "The rent has not been marked paid."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "balance",
+                "value": "3400.0",
+                "means": "Checking has $3,400."
+              },
+              {
+                "table": "invoices",
+                "field_name": "amount",
+                "value": "840.0",
+                "means": "An unpaid supplier bill of $840 also counts against available cash."
+              },
+              {
+                "table": "invoices",
+                "field_name": "status",
+                "value": "open",
+                "means": "The supplier invoice remains unpaid."
+              },
+              {
+                "table": "invoices",
+                "field_name": "days_until_due",
+                "value": "-3",
+                "means": "The supplier invoice is three days overdue."
+              },
+              {
+                "table": "cash_accounts",
+                "field_name": "cash_available_after_all_commitments",
+                "value": "160.0",
+                "means": "After rent and open bills are counted, $160 remains available."
+              },
+              {
+                "table": "desk",
+                "field_name": "date_today",
+                "value": "2026-08-31",
+                "means": "The shop's date is August 31, 2026, making rent due in two days."
+              }
+            ],
+            "money": {
+              "kind": "rent",
+              "ref_id": 1,
+              "account": "checking",
+              "what": "Pay lease 1 rent to Elm City Properties",
+              "amount": 2400.0,
+              "leaves_available": 160.0,
+              "affordable": true,
+              "needs_human_approval": true
+            },
+            "needs_human_approval": true,
+            "risks": [
+              "The $840 supplier invoice is already three days overdue and remains unpaid.",
+              "After rent and the open invoice, only $160 remains available; no other spending should be treated as covered by that amount without checking commitments."
+            ],
+            "unresolved": "A named human approver must approve the $2,400 rent payment before it can be made. No payment was made."
+          }
+        },
+        {
+          "seq": 42,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "decision",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Payment proposed, awaiting a human: Pay lease 1 rent to Elm City Properties",
+          "detail": {
+            "id": 2,
+            "run_id": "1188f2e6",
+            "ticket_id": 102,
+            "kind": "rent",
+            "ref_id": 1,
+            "amount": 2400.0,
+            "account": "checking",
+            "what": "Pay lease 1 rent to Elm City Properties",
+            "created_at": "2026-10-10T20:51:48+00:00",
+            "status": "awaiting_approval",
+            "decided_by": "",
+            "decided_at": "",
+            "result": {}
+          }
+        },
+        {
+          "seq": 43,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "run_started",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Running the team on ticket 103.",
+          "detail": {
+            "model": "gpt-6-luna",
+            "max_depth": 3
+          }
+        },
+        {
+          "seq": 44,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "boss",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=103)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 103
+            }
+          }
+        },
+        {
+          "seq": 45,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_started",
+          "agent": "inventory",
+          "tool": "",
+          "summary": "asked: Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. How many are physically on the shelf, and if fewer than 20, what replenishment timing can we confirm?",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "inventory"
+            ]
+          }
+        },
+        {
+          "seq": 46,
+          "at": "2026-10-10T20:51:48+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_started",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "asked: Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M, with a bulk discount. What are the current list price and unit-cost floor, and what discounted unit price (if any",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "accounting"
+            ]
+          }
+        },
+        {
+          "seq": 47,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=103)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 103
+            }
+          }
+        },
+        {
+          "seq": 48,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "check_stock",
+          "summary": "called check_stock(sku='CC-HOOD-NAVY', size='M')",
+          "detail": {
+            "arguments": {
+              "sku": "CC-HOOD-NAVY",
+              "size": "M"
+            }
+          }
+        },
+        {
+          "seq": 49,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=103)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 103
+            }
+          }
+        },
+        {
+          "seq": 50,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "inventory",
+          "tool": "list_vendors",
+          "summary": "called list_vendors()",
+          "detail": {
+            "arguments": {}
+          }
+        },
+        {
+          "seq": 51,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "accounting",
+          "tool": "get_price_and_floor",
+          "summary": "called get_price_and_floor(sku='CC-HOOD-NAVY', quantity=20)",
+          "detail": {
+            "arguments": {
+              "sku": "CC-HOOD-NAVY",
+              "quantity": 20
+            }
+          }
+        },
+        {
+          "seq": 52,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_replied",
+          "agent": "inventory",
+          "tool": "",
+          "summary": "There are 8 CC-HOOD-NAVY hoodies in size M on the shelf in Aisle A, so the request for 20 is short by 12. A supplier specializing in apparel reprints has a 5-day lead time, which looks like a possible match for hoodies. That is not confirmed timing for this specific hoodie: the database does not record which supplier provides it, so we cannot confirm when a restock would arrive.",
+          "detail": {
+            "answer": "There are 8 CC-HOOD-NAVY hoodies in size M on the shelf in Aisle A, so the request for 20 is short by 12. A supplier specializing in apparel reprints has a 5-day lead time, which looks like a possible match for hoodies. That is not confirmed timing for this specific hoodie: the database does not record which supplier provides it, so we cannot confirm when a restock would arrive.",
+            "facts": [
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "8",
+                "means": "Eight medium navy hoodies are physically on the shelf."
+              },
+              {
+                "table": "inventory",
+                "field_name": "location",
+                "value": "Aisle A",
+                "means": "The medium hoodies are located in Aisle A."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "20",
+                "means": "Ticket 103 requests 20 hoodies, leaving 12 beyond the current shelf stock."
+              },
+              {
+                "table": "vendors",
+                "field_name": "specialty",
+                "value": "apparel reprint",
+                "means": "A supplier with this specialty may be a relevant match for hoodies."
+              },
+              {
+                "table": "vendors",
+                "field_name": "lead_days",
+                "value": "5",
+                "means": "That supplier's listed lead time is 5 days, but it is not confirmed for this hoodie."
+              },
+              {
+                "table": "vendors",
+                "field_name": "sku_to_vendor_mapping_exists",
+                "value": "false",
+                "means": "The database does not map this hoodie to a supplier."
+              }
+            ],
+            "actions_taken": [],
+            "money": null,
+            "blocked_by": "",
+            "unknown": "The database does not record which supplier provides CC-HOOD-NAVY, so the apparel reprint supplier's 5-day lead time is only a possible match, not confirmed replenishment timing.",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 53,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_replied",
+          "agent": "accounting",
+          "tool": "",
+          "summary": "For Ticket 103, the list price is $58 per hoodie and the unit-cost floor is $22. At the floor, 20 hoodies total $440, but that is break-even with no margin. The list-price total is $1,160, so the maximum possible discount before reaching cost is $36 per hoodie ($720 total). I would not recommend pricing at the floor; the records do not support choosing a specific discounted price above it. Any pri",
+          "detail": {
+            "answer": "For Ticket 103, the list price is $58 per hoodie and the unit-cost floor is $22. At the floor, 20 hoodies total $440, but that is break-even with no margin. The list-price total is $1,160, so the maximum possible discount before reaching cost is $36 per hoodie ($720 total). I would not recommend pricing at the floor; the records do not support choosing a specific discounted price above it. Any price below $22 would sell at a loss.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-HOOD-NAVY",
+                "means": "Ticket 103 is for the navy hoodie."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "M",
+                "means": "The request is for size M."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "20",
+                "means": "The club requested 20 hoodies."
+              },
+              {
+                "table": "pricing",
+                "field_name": "list_price",
+                "value": "58.0",
+                "means": "The current list price is $58 per hoodie."
+              },
+              {
+                "table": "pricing",
+                "field_name": "unit_cost",
+                "value": "22.0",
+                "means": "The cost floor is $22 per hoodie."
+              },
+              {
+                "table": "pricing",
+                "field_name": "price_floor",
+                "value": "22.0",
+                "means": "A price below $22 per hoodie would sell below cost."
+              },
+              {
+                "table": "pricing",
+                "field_name": "total_at_list",
+                "value": "1160.0",
+                "means": "Twenty hoodies at list price total $1,160."
+              },
+              {
+                "table": "pricing",
+                "field_name": "total_at_cost",
+                "value": "440.0",
+                "means": "Twenty hoodies at the cost floor total $440."
+              },
+              {
+                "table": "pricing",
+                "field_name": "max_total_discount",
+                "value": "720.0",
+                "means": "The total discount at the break-even floor would be $720."
+              },
+              {
+                "table": "pricing",
+                "field_name": "margin_per_unit",
+                "value": "36.0",
+                "means": "At list price, the margin above cost is $36 per hoodie."
+              }
+            ],
+            "actions_taken": [],
+            "money": null,
+            "blocked_by": "",
+            "unknown": "The database does not record a preferred discount or a pricing policy for this bulk request, so it does not support selecting a particular discounted price above the $22 floor.",
+            "consulted": []
+          }
+        },
+        {
+          "seq": 54,
+          "at": "2026-10-10T20:51:49+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_started",
+          "agent": "customer_service",
+          "tool": "",
+          "summary": "asked: Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. With 8 in stock, no confirmed restock date, and no approved specific discount (floor $22, list $58), draft a conc",
+          "detail": {
+            "depth": 1,
+            "chain": [
+              "boss",
+              "customer_service"
+            ]
+          }
+        },
+        {
+          "seq": 55,
+          "at": "2026-10-10T20:51:50+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "customer_service",
+          "tool": "get_ticket",
+          "summary": "called get_ticket(ticket_id=103)",
+          "detail": {
+            "arguments": {
+              "ticket_id": 103
+            }
+          }
+        },
+        {
+          "seq": 56,
+          "at": "2026-10-10T20:51:50+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "customer_service",
+          "tool": "get_price_and_floor",
+          "summary": "called get_price_and_floor(sku='CC-HOOD-NAVY', quantity=20)",
+          "detail": {
+            "arguments": {
+              "sku": "CC-HOOD-NAVY",
+              "quantity": 20
+            }
+          }
+        },
+        {
+          "seq": 57,
+          "at": "2026-10-10T20:51:50+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "tool_call",
+          "agent": "customer_service",
+          "tool": "check_stock",
+          "summary": "called check_stock(sku='CC-HOOD-NAVY', size='M')",
+          "detail": {
+            "arguments": {
+              "sku": "CC-HOOD-NAVY",
+              "size": "M"
+            }
+          }
+        },
+        {
+          "seq": 58,
+          "at": "2026-10-10T20:51:50+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "agent_replied",
+          "agent": "customer_service",
+          "tool": "",
+          "summary": "Hi Yale AI Club \u2014 we currently have 8 medium navy hoodies, so we can\u2019t promise all 20 or give you a restock date. We don\u2019t have an approved bulk discount to offer. We\u2019ll need to confirm what we can do for the remaining hoodies and any pricing before we can commit.",
+          "detail": {
+            "answer": "Hi Yale AI Club \u2014 we currently have 8 medium navy hoodies, so we can\u2019t promise all 20 or give you a restock date. We don\u2019t have an approved bulk discount to offer. We\u2019ll need to confirm what we can do for the remaining hoodies and any pricing before we can commit.",
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "requester",
+                "value": "Yale AI Club",
+                "means": "The request came from Yale AI Club."
+              },
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "20",
+                "means": "The club asked for 20 hoodies."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "8",
+                "means": "There are 8 medium navy hoodies in stock."
+              },
+              {
+                "table": "inventory",
+                "field_name": "size",
+                "value": "M",
+                "means": "The stock count is for medium hoodies."
+              }
+            ],
+            "actions_taken": [],
+            "money": null,
+            "blocked_by": "Needs the Boss's approval before sending.",
+            "unknown": "The database does not establish a confirmed restock date or an approved specific bulk discount.",
+            "consulted": [
+              "Boss"
+            ]
+          }
+        },
+        {
+          "seq": 59,
+          "at": "2026-10-10T20:51:51+00:00",
+          "run_id": "5c9609f5",
+          "ticket_id": 103,
+          "kind": "decision",
+          "agent": "boss",
+          "tool": "",
+          "summary": "Do not approve a bulk discount now. Offer the 8 medium navy hoodies currently in stock at the $58 list price, and do not promise the other 12 or a restock date. Any discounted quote requires a human to approve a specific price at or above the $22 cost floor.",
+          "detail": {
+            "ticket_id": 103,
+            "decision": "Do not approve a bulk discount now. Offer the 8 medium navy hoodies currently in stock at the $58 list price, and do not promise the other 12 or a restock date. Any discounted quote requires a human to approve a specific price at or above the $22 cost floor.",
+            "reply_to_requester": "Hi Yale AI Club \u2014 we currently have 8 medium navy hoodies available at the $58 list price each. We can\u2019t commit to all 20 or give you a restock date for the remaining 12. We don\u2019t have an approved bulk discount to offer; if you\u2019d like us to consider one, a human will need to approve a specific price first.",
+            "rationale": "The request is for 20 size-M hoodies, but only 8 are on the shelf. The list price is $58 each and the cost floor is $22 each; no specific discount above that floor is supported by the records. So the safe offer is the available stock at list price, with no commitment on the shortfall. No payment or price change is made here.",
+            "steps": [
+              {
+                "agent": "Inventory",
+                "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. How many are physically on the shelf, and if fewer than 20, what replenishment timing can we confirm?",
+                "learned": "8 medium navy hoodies are on the shelf; that leaves 12 beyond current stock. A possible apparel-reprint supplier has a 5-day lead time, but the supplier-to-hoodie link and arrival timing are unconfirmed."
+              },
+              {
+                "agent": "Accounting",
+                "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M, with a bulk discount. What are the current list price and unit-cost floor, and what discounted unit price (if any) can be recommended without selling below cost? Please include the 20-unit totals.",
+                "learned": "List price is $58 per hoodie and unit-cost floor is $22. Accounting could not support choosing a particular discounted price above the floor."
+              },
+              {
+                "agent": "Customer Service",
+                "asked": "Ticket 103: Yale AI Club requests 20 CC-HOOD-NAVY hoodies, size M. With 8 in stock, no confirmed restock date, and no approved specific discount (floor $22, list $58), draft a concise customer reply that does not promise unavailable stock or an unsupported discount.",
+                "learned": "Drafted a courteous reply explaining that all 20 and a restock date cannot be promised, and that no bulk discount is approved."
+              }
+            ],
+            "facts": [
+              {
+                "table": "tickets",
+                "field_name": "qty",
+                "value": "20",
+                "means": "The request is for 20 hoodies."
+              },
+              {
+                "table": "tickets",
+                "field_name": "sku",
+                "value": "CC-HOOD-NAVY",
+                "means": "The request is for navy hoodies."
+              },
+              {
+                "table": "tickets",
+                "field_name": "size",
+                "value": "M",
+                "means": "The requested size is medium."
+              },
+              {
+                "table": "inventory",
+                "field_name": "qty",
+                "value": "8",
+                "means": "There are 8 medium navy hoodies on the shelf."
+              },
+              {
+                "table": "pricing",
+                "field_name": "list_price",
+                "value": "58.0",
+                "means": "The listed price is $58 per hoodie."
+              },
+              {
+                "table": "pricing",
+                "field_name": "unit_cost",
+                "value": "22.0",
+                "means": "The cost floor is $22 per hoodie; a discounted price must not go below this."
+              }
+            ],
+            "money": null,
+            "needs_human_approval": false,
+            "risks": [
+              "The 8 currently available hoodies may no longer be available when the requester responds; no stock is reserved.",
+              "The database does not confirm a supplier or restock date for the remaining hoodies."
+            ],
+            "unresolved": "No specific discount was selected. If the shop wants to offer one, a human must approve the exact price before it is quoted; it must be at least $22 per hoodie. The database does not record which supplier provides this hoodie, so no restock date can be confirmed."
+          }
+        },
+        {
+          "seq": 60,
+          "at": "2026-10-10T20:51:51+00:00",
+          "run_id": "cfe2c469",
+          "ticket_id": 101,
+          "kind": "approval",
+          "agent": "human",
+          "tool": "",
+          "summary": "Rena Lathbridge approved $840.00 \u2014 Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.. New balance $2560.0.",
+          "detail": {
+            "approval": {
+              "id": 1,
+              "run_id": "cfe2c469",
+              "ticket_id": 101,
+              "kind": "invoice",
+              "ref_id": 501,
+              "amount": 840.0,
+              "account": "checking",
+              "what": "Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+              "created_at": "2026-10-10T20:51:35+00:00",
+              "status": "approved",
+              "decided_by": "Rena Lathbridge",
+              "decided_at": "2026-10-10T20:51:51+00:00",
+              "result": {
+                "recorded": true,
+                "payment_id": 1,
+                "kind": "invoice",
+                "ref_id": 501,
+                "amount": 840.0,
+                "account": "checking",
+                "paid_at": "2026-08-31",
+                "approved_by": "Rena Lathbridge",
+                "new_balance": 2560.0,
+                "invoice_marked_paid": 501
+              }
+            },
+            "tool_result": {
+              "recorded": true,
+              "payment_id": 1,
+              "kind": "invoice",
+              "ref_id": 501,
+              "amount": 840.0,
+              "account": "checking",
+              "paid_at": "2026-08-31",
+              "approved_by": "Rena Lathbridge",
+              "new_balance": 2560.0,
+              "invoice_marked_paid": 501
+            }
+          }
+        },
+        {
+          "seq": 61,
+          "at": "2026-10-10T20:51:52+00:00",
+          "run_id": "1188f2e6",
+          "ticket_id": 102,
+          "kind": "approval",
+          "agent": "human",
+          "tool": "",
+          "summary": "Rena Lathbridge approved $2,400.00 \u2014 Pay lease 1 rent to Elm City Properties. New balance $160.0.",
+          "detail": {
+            "approval": {
+              "id": 2,
+              "run_id": "1188f2e6",
+              "ticket_id": 102,
+              "kind": "rent",
+              "ref_id": 1,
+              "amount": 2400.0,
+              "account": "checking",
+              "what": "Pay lease 1 rent to Elm City Properties",
+              "created_at": "2026-10-10T20:51:48+00:00",
+              "status": "approved",
+              "decided_by": "Rena Lathbridge",
+              "decided_at": "2026-10-10T20:51:52+00:00",
+              "result": {
+                "recorded": true,
+                "payment_id": 2,
+                "kind": "rent",
+                "ref_id": 1,
+                "amount": 2400.0,
+                "account": "checking",
+                "paid_at": "2026-08-31",
+                "approved_by": "Rena Lathbridge",
+                "new_balance": 160.0,
+                "invoice_marked_paid": null
+              }
+            },
+            "tool_result": {
+              "recorded": true,
+              "payment_id": 2,
+              "kind": "rent",
+              "ref_id": 1,
+              "amount": 2400.0,
+              "account": "checking",
+              "paid_at": "2026-08-31",
+              "approved_by": "Rena Lathbridge",
+              "new_balance": 160.0,
+              "invoice_marked_paid": null
+            }
+          }
+        }
+      ],
+      "event_count": 61
+    }
+  ],
+  "run_count": 1
+}

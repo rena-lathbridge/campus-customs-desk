@@ -1,0 +1,235 @@
+{
+  "generated_at": "2026-10-10T20:53:06+00:00",
+  "shop_date": "2026-08-31",
+  "model": "gpt-6-luna",
+  "database": "data/campus_customs_new.db",
+  "starting_checking_balance": 3400.0,
+  "ending_checking_balance": 160.0,
+  "total_paid": 3240.0,
+  "all_tickets_resolved": true,
+  "tickets": [
+    {
+      "ticket_id": 101,
+      "type": "customer_order",
+      "requester": "Tauhid Zaman",
+      "subject": "Bulldog tee",
+      "final_status": "resolved",
+      "short_outcome": "Resolved. The small white tee is out of stock and no restock date could be supported, so nothing was promised to the customer. The linked overdue invoice 501 was recommended for payment and a human approved $840.",
+      "reply_sent_to_requester": "Hi Tauhid \u2014 we don't have the white tee in small right now, and we don't have a confirmed restock date, so I can't promise when it will be available. If another size works, we currently have medium, large, and extra large.",
+      "agents_that_worked": [
+        "Boss",
+        "Inventory",
+        "Accounting",
+        "Facilities",
+        "Customer Service"
+      ],
+      "agents_not_called": [],
+      "agent_contributions": [
+        {
+          "agent": "Boss",
+          "role": "decided and closed the ticket",
+          "contributed": "Do not promise the tee now: size S is out of stock and the restock date is unconfirmed. Recommend paying overdue invoice 501 from checking only after a human approves it; keep rent reserved, and make no payment until then.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "list_tickets"
+          ]
+        },
+        {
+          "agent": "Inventory",
+          "role": "consulted",
+          "contributed": "There are zero in size S. Bulldog Print Co's apparel-reprint specialty may fit, and its listed lead time is five days, but supplier linkage and the tee's replenishment timing are unconfirmed.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "check_stock",
+            "list_vendors"
+          ]
+        },
+        {
+          "agent": "Accounting",
+          "role": "consulted",
+          "contributed": "Invoice 501 is open for $840 and overdue. Checking has $3,400; rent and all open bills are covered, leaving $160 available. A human approver is required; payment is only recommended.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "list_open_invoices",
+            "get_rent_due_and_cash_position"
+          ]
+        },
+        {
+          "agent": "Facilities",
+          "role": "consulted",
+          "contributed": "Rent is $2,400 and due in two days. It remains covered if invoice 501 is paid, with $160 left after commitments; invoice 501 is three days overdue.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "get_rent_due_and_cash_position"
+          ]
+        },
+        {
+          "agent": "Customer Service",
+          "role": "consulted",
+          "contributed": "Drafted a response explaining there is no small white tee or confirmed restock date, and offering other sizes.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "check_stock"
+          ]
+        }
+      ],
+      "human_approvals": [
+        {
+          "approval_id": 1,
+          "approved_by": "Rena Lathbridge",
+          "kind": "invoice",
+          "ref_id": 501,
+          "amount": 840.0,
+          "account": "checking",
+          "what": "Approve payment of overdue invoice 501 to Bulldog Print Co, while keeping rent reserved.",
+          "balance_before": 3400.0,
+          "balance_after": 2560.0,
+          "payment_id": 1,
+          "paid_at": "2026-08-31"
+        }
+      ],
+      "cash_effect": -840.0,
+      "needs_human_approval": true,
+      "risks": [
+        "Only $160 remains available after rent and all open bills; there is little room for an unexpected cost.",
+        "Paying invoice 501 does not establish that Bulldog Print Co supplies this specific tee or that restocking will take five days.",
+        "The customer cannot be promised a restock date."
+      ],
+      "unresolved": "No human approver has been named, so invoice 501 remains unpaid pending approval. The database does not record which supplier supplies CC-TEE-WHITE or a confirmed restock date."
+    },
+    {
+      "ticket_id": 102,
+      "type": "rent_notice",
+      "requester": "Elm City Properties",
+      "subject": "Rent due",
+      "final_status": "resolved",
+      "short_outcome": "Resolved. Rent of $2,400 on lease 1 was confirmed against the lease itself and found affordable once the overdue invoice was also counted. A human approved the $2,400 payment.",
+      "reply_sent_to_requester": "We have your rent notice. The $2,400 rent for the Chapel Street shop is due September 2, 2026. Payment is awaiting approval by a named human; it has not yet been sent.",
+      "agents_that_worked": [
+        "Boss",
+        "Facilities",
+        "Accounting"
+      ],
+      "agents_not_called": [
+        "Inventory",
+        "Customer Service"
+      ],
+      "agent_contributions": [
+        {
+          "agent": "Boss",
+          "role": "decided and closed the ticket",
+          "contributed": "Recommend paying the $2,400 rent for lease 1 from checking by September 2, 2026. No payment has been made; a named human must approve it first.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "list_tickets"
+          ]
+        },
+        {
+          "agent": "Facilities",
+          "role": "consulted",
+          "contributed": "Confirmed rent is $2,400, due September 2, 2026, and is not marked paid.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "get_rent_due_and_cash_position"
+          ]
+        },
+        {
+          "agent": "Accounting",
+          "role": "consulted",
+          "contributed": "Confirmed the rent payment is covered after accounting for the open $840 invoice, with $160 remaining; a named human must approve paying $2,400 from checking toward lease 1.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "get_rent_due_and_cash_position"
+          ]
+        }
+      ],
+      "human_approvals": [
+        {
+          "approval_id": 2,
+          "approved_by": "Rena Lathbridge",
+          "kind": "rent",
+          "ref_id": 1,
+          "amount": 2400.0,
+          "account": "checking",
+          "what": "Pay lease 1 rent to Elm City Properties",
+          "balance_before": 2560.0,
+          "balance_after": 160.0,
+          "payment_id": 2,
+          "paid_at": "2026-08-31"
+        }
+      ],
+      "cash_effect": -2400.0,
+      "needs_human_approval": true,
+      "risks": [
+        "The $840 supplier invoice is already three days overdue and remains unpaid.",
+        "After rent and the open invoice, only $160 remains available; no other spending should be treated as covered by that amount without checking commitments."
+      ],
+      "unresolved": "A named human approver must approve the $2,400 rent payment before it can be made. No payment was made."
+    },
+    {
+      "ticket_id": 103,
+      "type": "price_override",
+      "requester": "Yale AI Club",
+      "subject": "Bulk hoodie discount",
+      "final_status": "resolved",
+      "short_outcome": "Resolved with no payment. Only 8 of the 20 medium hoodies exist and the 12-unit shortfall could not be funded, so the team offered the 8 at list price and refused to quote a discount without human approval of a specific price above the $22 cost floor.",
+      "reply_sent_to_requester": "Hi Yale AI Club \u2014 we currently have 8 medium navy hoodies available at the $58 list price each. We can\u2019t commit to all 20 or give you a restock date for the remaining 12. We don\u2019t have an approved bulk discount to offer; if you\u2019d like us to consider one, a human will need to approve a specific price first.",
+      "agents_that_worked": [
+        "Boss",
+        "Inventory",
+        "Accounting",
+        "Customer Service"
+      ],
+      "agents_not_called": [
+        "Facilities"
+      ],
+      "agent_contributions": [
+        {
+          "agent": "Boss",
+          "role": "decided and closed the ticket",
+          "contributed": "Do not approve a bulk discount now. Offer the 8 medium navy hoodies currently in stock at the $58 list price, and do not promise the other 12 or a restock date. Any discounted quote requires a human to approve a specific price at or above the $22 cost floor.",
+          "mcp_tools_used": [
+            "get_ticket"
+          ]
+        },
+        {
+          "agent": "Inventory",
+          "role": "consulted",
+          "contributed": "8 medium navy hoodies are on the shelf; that leaves 12 beyond current stock. A possible apparel-reprint supplier has a 5-day lead time, but the supplier-to-hoodie link and arrival timing are unconfirmed.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "check_stock",
+            "list_vendors"
+          ]
+        },
+        {
+          "agent": "Accounting",
+          "role": "consulted",
+          "contributed": "List price is $58 per hoodie and unit-cost floor is $22. Accounting could not support choosing a particular discounted price above the floor.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "get_price_and_floor"
+          ]
+        },
+        {
+          "agent": "Customer Service",
+          "role": "consulted",
+          "contributed": "Drafted a courteous reply explaining that all 20 and a restock date cannot be promised, and that no bulk discount is approved.",
+          "mcp_tools_used": [
+            "get_ticket",
+            "get_price_and_floor",
+            "check_stock"
+          ]
+        }
+      ],
+      "human_approvals": [],
+      "cash_effect": 0.0,
+      "needs_human_approval": false,
+      "risks": [
+        "The 8 currently available hoodies may no longer be available when the requester responds; no stock is reserved.",
+        "The database does not confirm a supplier or restock date for the remaining hoodies."
+      ],
+      "unresolved": "No specific discount was selected. If the shop wants to offer one, a human must approve the exact price before it is quoted; it must be at least $22 per hoodie. The database does not record which supplier provides this hoodie, so no restock date can be confirmed."
+    }
+  ]
+}

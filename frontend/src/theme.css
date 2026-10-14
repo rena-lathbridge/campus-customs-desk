@@ -1,0 +1,440 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   Campus Customs — "The Desk"
+
+   Styled after a minimalist fashion house: Jil Sander, The Row, Céline.
+
+   The whole aesthetic is restraint. Bone paper, ink type, hairline rules, one
+   oxblood accent used perhaps six times on the page. No shadows, no gradients,
+   no rounded corners, no filled buttons unless something is about to happen.
+   Space does the work that decoration would otherwise do.
+
+   The five agents are still told apart by how their words are SET rather than
+   by colour — but the palette they sit in is tonal now: olive, sage, slate and
+   clay, all desaturated to within a few steps of grey, so the board reads as
+   one considered set rather than five competing highlights.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --paper:#f6f4ef; --paper-2:#f1eee7; --paper-3:#eae6dd;
+  --ink:#16150f; --ink-2:#36342b; --muted:#8c8779; --faint:#aaa498;
+  --rule:#dcd7cb; --rule-2:#c8c2b4;
+  --accent:#8c2f2a;              /* oxblood. used sparingly, on purpose */
+  --accent-soft:rgba(140,47,42,.07);
+  --r:0px;
+  --mono:"SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --disp:"Didot","Bodoni 72","Hoefler Text",Garamond,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --label:.68rem; --track:.22em;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:15px/1.72 var(--sans);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+
+/* the one piece of texture: a barely-there paper tone */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(1200px 700px at 50% -20%, #fffefb, transparent 70%);
+}
+
+/* ── shell ───────────────────────────────────────────────────────────────── */
+.desk{position:relative;z-index:1;height:100%;display:flex;flex-direction:column}
+.topbar{
+  display:flex;align-items:flex-end;gap:26px;padding:26px 40px 18px;
+  border-bottom:1px solid var(--ink);background:var(--paper);
+}
+.brand{font:400 23px/1 var(--disp);letter-spacing:.14em;text-transform:uppercase}
+.brand em{font-style:normal;font-weight:400}
+.brand small{
+  display:block;font:500 var(--label)/1 var(--sans);color:var(--muted);
+  letter-spacing:var(--track);text-transform:uppercase;margin-top:9px;
+}
+.topbar .spacer{flex:1}
+.stat{
+  font:500 var(--label)/1 var(--sans);color:var(--muted);
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.stat b{color:var(--ink);font-weight:500;font-family:var(--mono);letter-spacing:0}
+
+.btn{
+  border:0;border-bottom:1px solid var(--rule-2);background:none;color:var(--ink-2);
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  padding:9px 2px;cursor:pointer;transition:.2s;
+}
+.btn:hover:not(:disabled){color:var(--ink);border-bottom-color:var(--ink)}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.btn.pink{                      /* the one call to action on the page */
+  border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  padding:11px 20px;
+}
+.btn.pink:hover:not(:disabled){background:var(--accent);border-color:var(--accent)}
+.btn.ghost{}
+
+.floor{flex:1;display:grid;grid-template-columns:320px 1fr 330px;min-height:0}
+.col{min-height:0;overflow:auto;padding:26px 32px 28px}
+.col.left{border-right:1px solid var(--rule)}
+.col.right{border-left:1px solid var(--rule)}
+.col::-webkit-scrollbar{width:11px}
+.col::-webkit-scrollbar-thumb{background:var(--rule)}
+
+.hdr{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);margin:0 0 26px;padding-bottom:12px;border-bottom:1px solid var(--ink);
+}
+
+/* ── tickets: catalogue entries, not index cards ─────────────────────────── */
+.docket{
+  position:relative;background:none;border:0;border-bottom:1px solid var(--rule);
+  padding:22px 0 24px;margin:0;cursor:pointer;width:100%;text-align:left;
+  font:inherit;display:block;color:var(--ink);transition:.22s;
+}
+.docket:hover{padding-left:10px}
+.docket.on{padding-left:14px}
+.docket.on::before{
+  content:"";position:absolute;left:0;top:24px;bottom:26px;width:1px;background:var(--accent);
+}
+.docket .no{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);
+}
+.docket .subj{font:400 24px/1.22 var(--disp);margin:12px 0 7px;letter-spacing:.01em}
+.docket .who{
+  font:500 var(--label)/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.docket .ask{font:400 13.5px/1.6 var(--sans);color:var(--muted);margin-top:12px}
+.docket .tags{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.tag{
+  font:400 11px/1 var(--mono);color:var(--muted);letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.tag::before{content:"— "}
+
+/* resolution: a letterpress marque, not a rubber stamp */
+.stamp{
+  display:inline-block;margin-top:16px;
+  font:500 var(--label)/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);
+  padding:7px 0;animation:press .5s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes press{          /* the marque only: letter-spacing inherits, so keep it local */
+  from{opacity:0;letter-spacing:.9em}
+  to{opacity:1;letter-spacing:.3em}
+}
+@keyframes rise{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+.docket.done .subj{color:var(--ink-2)}
+
+/* ── the opener: an editorial masthead for the selected ticket ───────────── */
+.opener{display:flex;align-items:flex-start;gap:28px;padding:0 0 20px;
+  border-bottom:1px solid var(--ink)}
+.opener-no{
+  font:400 74px/.82 var(--disp);color:var(--ink);letter-spacing:-.04em;flex:none;
+  font-variant-numeric:lining-nums;
+}
+.opener-body{padding-top:6px;flex:1}
+.kicker{font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;color:var(--accent)}
+.opener-title{font:400 28px/1.14 var(--disp);margin:11px 0 9px;letter-spacing:.005em;
+  max-width:20ch}
+.opener-who{font:500 var(--label)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted)}
+.opener-mark{
+  display:inline-block;margin-top:14px;font:500 var(--label)/1 var(--sans);
+  letter-spacing:.3em;text-transform:uppercase;color:var(--accent);
+  border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);padding:7px 0;
+}
+
+/* ── the view switcher: everything about a ticket is behind a click ─────── */
+.views{display:flex;gap:34px;border-bottom:1px solid var(--ink);margin-bottom:0}
+.views button{
+  background:none;border:0;border-bottom:1px solid transparent;color:var(--muted);
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  padding:14px 0 12px;cursor:pointer;margin-bottom:-1px;transition:.2s;
+}
+.views button:hover:not(:disabled){color:var(--ink)}
+.views button.on{color:var(--accent);border-bottom-color:var(--accent)}
+.views button:disabled{opacity:.3;cursor:not-allowed}
+
+/* ── the contact sheet: all five agents on one screen, no scrolling ─────── */
+.sheet{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.sheet .plate:first-child{grid-column:1 / -1}
+.plate{
+  position:relative;text-align:left;border:0;background:var(--paper);cursor:pointer;
+  padding:15px 22px 14px;font:inherit;color:var(--ink);transition:.22s;display:block;
+  min-height:120px;
+}
+.plate:hover:not(:disabled){background:#fffdfa}
+.plate:disabled{cursor:default;background:var(--paper-2)}
+.p-n{display:block;font:400 11px/1 var(--mono);color:var(--faint);letter-spacing:.1em}
+.p-name{display:block;margin-top:9px;font:500 var(--label)/1 var(--sans);
+  letter-spacing:var(--track);text-transform:uppercase;color:var(--ink)}
+.p-role{display:block;margin-top:6px;font:400 italic var(--label)/1 var(--sans);
+  letter-spacing:.08em;color:var(--faint)}
+.p-rule{display:block;height:2px;width:34px;background:var(--hue);margin:11px 0 0;
+  transition:.4s}
+.plate:hover:not(:disabled) .p-rule{width:72px}
+.plate.live .p-rule{width:100%;background:var(--accent);animation:breathe 1.8s infinite}
+.p-said{
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  margin-top:11px;font:400 13px/1.58 var(--sans);color:var(--ink-2);
+}
+.plate:first-child .p-said{
+  font:400 17px/1.44 var(--disp);color:var(--ink);-webkit-line-clamp:2;max-width:52ch;
+}
+.p-foot{
+  display:flex;justify-content:space-between;align-items:baseline;margin-top:13px;
+  font:400 var(--label)/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);
+}
+.p-more{color:var(--accent);opacity:0;transition:.22s}
+.plate:hover:not(:disabled) .p-more{opacity:1}
+.p-idle{
+  display:block;margin-top:13px;font:400 italic 14px/1 var(--disp);color:var(--faint);
+}
+
+/* ── panels behind the other three views ────────────────────────────────── */
+.panel{padding:26px 0 10px}
+.panel .say.decree{
+  font:400 20px/1.48 var(--disp);color:var(--ink);max-width:46ch;margin:0 0 10px;
+  letter-spacing:.004em;
+}
+.panel-h{
+  margin:30px 0 0;padding-bottom:14px;border-bottom:1px solid var(--ink);
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);
+}
+.panel-p{margin:20px 0 0;font-size:14.5px;color:var(--ink-2);max-width:70ch}
+.s-back{
+  margin-left:24px;background:none;border:0;border-bottom:1px solid var(--rule-2);
+  color:var(--muted);font:500 var(--label)/1 var(--sans);letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;padding:0 0 4px;
+}
+.s-back:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ── agent stations ──────────────────────────────────────────────────────── */
+.stations{display:grid;gap:0}
+.station{position:relative;transition:.25s;animation:rise .35s both}
+.station.idle{opacity:.34}
+.srow{display:flex;align-items:baseline;gap:20px}
+.rail{flex:none}
+.sname{font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;color:var(--ink)}
+.srole{font:400 var(--label)/1 var(--sans);letter-spacing:.1em;text-transform:lowercase;
+  color:var(--faint);margin-top:8px;font-style:italic}
+.led{margin-left:auto;font:400 var(--label)/1 var(--sans);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint)}
+.station.live .led{color:var(--accent)}
+.station.spoke .led{color:var(--muted)}
+.say{margin:0;color:var(--ink-2)}
+.tools{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+.tool{font:400 11px/1 var(--mono);color:var(--faint);letter-spacing:.03em;
+  padding-bottom:4px;border-bottom:1px solid var(--rule)}
+.tool.blocked{color:var(--accent);border-bottom-color:var(--accent);text-decoration:line-through}
+.dots{display:inline-flex;gap:7px;margin-top:18px}
+.dots i{width:3px;height:3px;border-radius:50%;background:var(--hue);
+  animation:bob 1.3s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.18s}
+.dots i:nth-child(3){animation-delay:.36s}
+@keyframes bob{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+/* ─────────── and now the part that stops this being one long list ─────────
+   Each voice gets its own SHAPE. A decree runs the full measure as a
+   statement. The three data voices sit in a narrow label rail with their
+   numbers set beside it. A letter is inset, narrow and italic. Different
+   agents therefore occupy different amounts of the page, and the column
+   gains a cadence instead of a metronome.                                   */
+
+/* the Boss — a full-width statement, ruled top and bottom, no rail */
+.station.v-decree{padding:40px 0 34px;border-bottom:0}
+.station.v-decree .srow{margin-bottom:26px}
+.station.v-decree .rail{display:flex;align-items:baseline;gap:16px}
+.station.v-decree .srole{margin-top:0}
+.station.v-decree .say.decree{
+  font:400 21px/1.45 var(--disp);color:var(--ink);max-width:40ch;letter-spacing:.004em;
+}
+.station.v-decree .tools{margin-top:26px}
+
+/* the three data voices — label rail left, figures right */
+.station.v-count,.station.v-ledger,.station.v-calendar{
+  display:grid;grid-template-columns:168px 1fr;gap:38px;padding:40px 0;align-items:start;
+}
+.station.v-count .srow,.station.v-ledger .srow,.station.v-calendar .srow{
+  display:block;position:relative;
+}
+.station.v-count .led,.station.v-ledger .led,.station.v-calendar .led{
+  margin:16px 0 0;display:block;
+}
+.station.v-count .say,.station.v-ledger .say,.station.v-calendar .say{max-width:60ch}
+.station.v-count::before,.station.v-ledger::before,.station.v-calendar::before{
+  content:"";position:absolute;left:0;top:30px;bottom:30px;width:1px;background:var(--hue);
+  opacity:0;transition:.3s;
+}
+.station.v-count.spoke::before,.station.v-ledger.spoke::before,
+.station.v-calendar.spoke::before,.station.v-count.live::before,
+.station.v-ledger.live::before,.station.v-calendar.live::before{opacity:.5;left:-20px}
+
+/* Customer Service — inset, narrow, set as correspondence */
+.station.v-letter{padding:40px 0 38px 0;border-bottom:0}
+.station.v-letter .srow{margin-bottom:22px}
+.station.v-letter .rail{display:flex;align-items:baseline;gap:16px}
+.station.v-letter .srole{margin-top:0}
+.station.v-letter .say.letter{
+  font:400 italic 17px/1.8 var(--disp);color:var(--ink);max-width:46ch;
+  border-left:1px solid var(--rule-2);padding-left:26px;
+}
+
+/* the three data voices keep their typographic settings */
+.say.count{font-family:var(--mono);font-size:13px;line-height:1.95}
+.say.ledger{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;
+  line-height:1.95}
+.say.calendar{font-family:var(--mono);font-size:13px;line-height:1.95}
+
+/* a magazine pull quote for the message that actually left the building */
+.pull{margin:0;padding:58px 0 0;text-align:center;animation:rise .4s both}
+.pull blockquote{
+  margin:0 auto;font:400 italic 24px/1.6 var(--disp);color:var(--ink);max-width:32ch;
+}
+.pull figcaption{
+  margin-top:24px;font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;color:var(--faint);
+}
+
+/* ── the till ────────────────────────────────────────────────────────────── */
+.till{padding:0 0 30px;border-bottom:1px solid var(--ink)}
+.till .cap{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);
+}
+.amount{
+  font:400 54px/1 var(--disp);letter-spacing:-.01em;margin:20px 0 4px;color:var(--ink);
+  font-variant-numeric:tabular-nums;transition:color .4s;
+}
+.amount.drop{color:var(--accent)}
+.delta{
+  font:400 11.5px/1 var(--mono);color:var(--accent);letter-spacing:.04em;
+  animation:rise .5s both;
+}
+.meter{height:1px;background:var(--rule);margin:26px 0 0;display:flex}
+.meter span{display:block;height:1px}
+.legend{
+  display:flex;gap:20px;margin-top:12px;
+  font:400 var(--label)/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+.legend i{width:14px;height:1px;display:inline-block;margin-right:7px;vertical-align:4px}
+.bars{margin-top:26px;display:grid;gap:14px}
+.bar{
+  font:400 var(--label)/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:12px;border-bottom:1px solid var(--rule);
+}
+.bar b{color:var(--ink);font:400 14px/1 var(--mono);font-variant-numeric:tabular-nums;
+  letter-spacing:0}
+
+.receipt{margin-top:28px}
+.receipt .rrow{
+  display:flex;justify-content:space-between;gap:14px;padding:9px 0;
+  font:400 11.5px/1.5 var(--mono);color:var(--ink-2);border-bottom:1px solid var(--rule);
+}
+.receipt .rrow:last-child{border-bottom:0}
+.receipt .rhead{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--ink);padding-bottom:10px;
+}
+
+/* ── approval: a chit that wants initialling ─────────────────────────────── */
+.approve{
+  margin-top:34px;padding:26px 0 0;border-top:1px solid var(--ink);
+  animation:rise .45s cubic-bezier(.16,1,.3,1) both;
+}
+.approve .ahead{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--accent);
+}
+.approve .awhat{font:400 19px/1.4 var(--disp);margin:16px 0 14px;max-width:34ch}
+.approve .amt{
+  font:400 36px/1 var(--disp);font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+}
+.approve .note{
+  font:400 12.5px/1.65 var(--sans);color:var(--muted);margin:16px 0 22px;max-width:40ch;
+}
+.approve input{
+  width:100%;border:0;border-bottom:1px solid var(--ink);background:none;
+  padding:11px 0;font:400 15px/1 var(--sans);color:var(--ink);margin-bottom:20px;
+  border-radius:0;
+}
+.approve input:focus{outline:0;border-bottom-color:var(--accent)}
+.approve input::placeholder{color:var(--faint);font-style:italic}
+.approve .row{display:flex;gap:26px;align-items:center}
+.approve .ok{
+  flex:1;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  padding:14px;font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;cursor:pointer;transition:.2s;border-radius:0;
+}
+.approve .ok:hover:not(:disabled){background:var(--accent);border-color:var(--accent)}
+.approve .ok:disabled{background:none;color:var(--faint);border-color:var(--rule);cursor:not-allowed}
+.approve .no{
+  background:none;border:0;border-bottom:1px solid var(--rule-2);color:var(--muted);
+  padding:9px 2px;font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;cursor:pointer;
+}
+.approve .no:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.sigline{
+  margin-top:22px;padding-top:12px;border-top:1px solid var(--rule);
+  font:400 var(--label)/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);
+}
+
+/* ── the wire ────────────────────────────────────────────────────────────── */
+.wire{border-top:1px solid var(--ink);background:var(--paper);height:150px;
+  display:flex;flex-direction:column}
+.wire .wh{display:flex;align-items:center;gap:12px;padding:12px 40px;
+  border-bottom:1px solid var(--rule)}
+.wire .wh span{
+  font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);text-transform:uppercase;
+  color:var(--muted);
+}
+.pip{width:4px;height:4px;border-radius:50%;background:var(--rule-2)}
+.pip.on{background:var(--accent);animation:breathe 1.8s infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.2}}
+.feed{flex:1;overflow:auto;padding:10px 40px 16px;font:400 11.5px/2 var(--mono)}
+.feed .ln{display:flex;gap:20px;animation:fade .35s both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.feed .t{color:var(--faint);flex:none}
+.feed .k{flex:none;width:104px;letter-spacing:.08em;text-transform:uppercase;font-size:10px;
+  color:var(--muted)}
+.feed .m{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.k.decision,.k.approval{color:var(--accent)}
+.k.error{color:var(--accent);font-weight:600}
+
+/* ── misc ────────────────────────────────────────────────────────────────── */
+.empty{
+  color:var(--muted);font:400 italic 15px/1.9 var(--disp);text-align:center;
+  padding:90px 24px;max-width:34ch;margin:0 auto;
+}
+.empty .big{display:block;font-size:22px;margin-bottom:18px;color:var(--rule-2);font-style:normal}
+.summary{margin-top:44px;padding-top:26px;border-top:1px solid var(--ink)}
+.summary h4{
+  margin:0 0 22px;font:500 var(--label)/1 var(--sans);letter-spacing:var(--track);
+  text-transform:uppercase;color:var(--muted);
+}
+.sline{display:flex;gap:22px;padding:12px 0;border-bottom:1px solid var(--rule);
+  font:400 14px/1.7 var(--sans);color:var(--ink-2)}
+.sline:last-child{border-bottom:0}
+.sline .pill{
+  font:500 var(--label)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  flex:none;align-self:flex-start;width:122px;padding-top:4px;border:0!important;
+}
+.banner{
+  border:0;border-left:1px solid var(--accent);background:var(--accent-soft);
+  color:var(--accent);padding:14px 18px;font-size:13.5px;margin-bottom:26px;
+}

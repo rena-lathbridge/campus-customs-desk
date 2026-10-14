@@ -1,0 +1,315 @@
+{
+  "generated_at": "2026-10-14T20:00:50+00:00",
+  "server": "campus-customs",
+  "transport": "stdio (fastmcp Client -> mcp_server/server.py)",
+  "config_file": ".mcp.json",
+  "database": "data/campus_customs_new.db",
+  "tools_advertised_by_server": [
+    "check_stock",
+    "get_price_and_floor",
+    "get_rent_due_and_cash_position",
+    "get_ticket",
+    "list_open_invoices",
+    "list_tickets",
+    "list_vendors",
+    "record_payment"
+  ],
+  "all_tools_match_database": true,
+  "tests": [
+    {
+      "ticket": 101,
+      "prompt": "Ticket 101 - Tauhid Zaman wants one Classic Bulldog Tee (CC-TEE-WHITE) in size S. Do we have one on the shelf right now?",
+      "tool": "check_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "tool_output": {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "found": true,
+        "rows": [
+          {
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B",
+            "in_stock": false
+          }
+        ],
+        "total_qty": 0
+      },
+      "database_values": {
+        "source_query": "SELECT sku, name, size, qty, location FROM inventory WHERE sku='CC-TEE-WHITE' AND size='S'",
+        "rows": [
+          {
+            "sku": "CC-TEE-WHITE",
+            "name": "Classic Bulldog Tee",
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B"
+          }
+        ]
+      },
+      "verification": {
+        "fields_checked": 6,
+        "all_match": true,
+        "checks": [
+          {
+            "field": "name",
+            "tool_output_value": "Classic Bulldog Tee",
+            "database_value": "Classic Bulldog Tee",
+            "match": true
+          },
+          {
+            "field": "rows[0].size",
+            "tool_output_value": "S",
+            "database_value": "S",
+            "match": true
+          },
+          {
+            "field": "rows[0].qty",
+            "tool_output_value": 0,
+            "database_value": 0,
+            "match": true
+          },
+          {
+            "field": "rows[0].location",
+            "tool_output_value": "Aisle B",
+            "database_value": "Aisle B",
+            "match": true
+          },
+          {
+            "field": "rows[0].in_stock",
+            "tool_output_value": false,
+            "database_value": false,
+            "match": true
+          },
+          {
+            "field": "total_qty",
+            "tool_output_value": 0,
+            "database_value": 0,
+            "match": true
+          }
+        ]
+      }
+    },
+    {
+      "ticket": 102,
+      "prompt": "Ticket 102 - Elm City Properties says the shop rent is due. How much is it, when is it due, and how much cash is actually free once everything we already owe is taken into account?",
+      "tool": "get_rent_due_and_cash_position",
+      "arguments": {
+        "lease_id": 1
+      },
+      "tool_output": {
+        "as_of": "2026-08-31",
+        "leases": [
+          {
+            "lease_id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400.0,
+            "next_due": "2026-09-02",
+            "days_until_due": 2,
+            "notes": null,
+            "already_paid": true
+          }
+        ],
+        "cash_accounts": [
+          {
+            "account": "checking",
+            "balance": 160.0,
+            "as_of": "2026-08-31"
+          }
+        ],
+        "open_invoices": [],
+        "cash_total": 160.0,
+        "obligations": {
+          "rent_total": 0,
+          "open_invoices_total": 0,
+          "total_committed": 0
+        },
+        "cash_available_after_all_commitments": 160.0,
+        "all_commitments_covered_by_cash": true
+      },
+      "database_values": {
+        "source_query": "leases(id=1) + desk.date_today + cash_accounts + invoices WHERE status!='paid'",
+        "lease": [
+          {
+            "id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400.0,
+            "next_due": "2026-09-02"
+          }
+        ],
+        "desk_date_today": [
+          {
+            "date_today": "2026-08-31"
+          }
+        ],
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 160.0,
+            "date": "2026-08-31"
+          }
+        ],
+        "unpaid_invoices": [],
+        "rent_already_paid": true
+      },
+      "verification": {
+        "fields_checked": 11,
+        "all_match": true,
+        "checks": [
+          {
+            "field": "as_of",
+            "tool_output_value": "2026-08-31",
+            "database_value": "2026-08-31",
+            "match": true
+          },
+          {
+            "field": "leases[0].monthly_rent",
+            "tool_output_value": 2400.0,
+            "database_value": 2400.0,
+            "match": true
+          },
+          {
+            "field": "leases[0].next_due",
+            "tool_output_value": "2026-09-02",
+            "database_value": "2026-09-02",
+            "match": true
+          },
+          {
+            "field": "leases[0].days_until_due",
+            "tool_output_value": 2,
+            "database_value": 2,
+            "match": true
+          },
+          {
+            "field": "cash_total",
+            "tool_output_value": 160.0,
+            "database_value": 160.0,
+            "match": true
+          },
+          {
+            "field": "open_invoices count",
+            "tool_output_value": 0,
+            "database_value": 0,
+            "match": true
+          },
+          {
+            "field": "obligations.rent_total",
+            "tool_output_value": 0,
+            "database_value": 0.0,
+            "match": true
+          },
+          {
+            "field": "obligations.open_invoices_total",
+            "tool_output_value": 0,
+            "database_value": 0,
+            "match": true
+          },
+          {
+            "field": "obligations.total_committed",
+            "tool_output_value": 0,
+            "database_value": 0.0,
+            "match": true
+          },
+          {
+            "field": "cash_available_after_all_commitments",
+            "tool_output_value": 160.0,
+            "database_value": 160.0,
+            "match": true
+          },
+          {
+            "field": "all_commitments_covered_by_cash",
+            "tool_output_value": true,
+            "database_value": true,
+            "match": true
+          }
+        ]
+      }
+    },
+    {
+      "ticket": 103,
+      "prompt": "Ticket 103 - The Yale AI Club wants 20 Basic Hoodie Big Yale (CC-HOOD-NAVY) in size M and is asking for a bulk discount. What do we sell them for, and how far down can the price go before the shop loses money on the order?",
+      "tool": "get_price_and_floor",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY",
+        "quantity": 20
+      },
+      "tool_output": {
+        "sku": "CC-HOOD-NAVY",
+        "found": true,
+        "unit_cost": 22.0,
+        "list_price": 58.0,
+        "margin_per_unit": 36.0,
+        "price_floor": 22.0,
+        "floor_note": "unit_cost is the break-even price; any unit price below it sells at a loss.",
+        "quantity": 20,
+        "total_at_list": 1160.0,
+        "total_at_cost": 440.0,
+        "max_total_discount": 720.0
+      },
+      "database_values": {
+        "source_query": "SELECT sku, unit_cost, list_price FROM pricing WHERE sku='CC-HOOD-NAVY'",
+        "rows": [
+          {
+            "sku": "CC-HOOD-NAVY",
+            "unit_cost": 22.0,
+            "list_price": 58.0
+          }
+        ]
+      },
+      "verification": {
+        "fields_checked": 7,
+        "all_match": true,
+        "checks": [
+          {
+            "field": "unit_cost",
+            "tool_output_value": 22.0,
+            "database_value": 22.0,
+            "match": true
+          },
+          {
+            "field": "list_price",
+            "tool_output_value": 58.0,
+            "database_value": 58.0,
+            "match": true
+          },
+          {
+            "field": "price_floor",
+            "tool_output_value": 22.0,
+            "database_value": 22.0,
+            "match": true
+          },
+          {
+            "field": "margin_per_unit",
+            "tool_output_value": 36.0,
+            "database_value": 36.0,
+            "match": true
+          },
+          {
+            "field": "total_at_list",
+            "tool_output_value": 1160.0,
+            "database_value": 1160.0,
+            "match": true
+          },
+          {
+            "field": "total_at_cost",
+            "tool_output_value": 440.0,
+            "database_value": 440.0,
+            "match": true
+          },
+          {
+            "field": "max_total_discount",
+            "tool_output_value": 720.0,
+            "database_value": 720.0,
+            "match": true
+          }
+        ]
+      }
+    }
+  ]
+}

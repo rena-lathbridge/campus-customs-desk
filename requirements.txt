@@ -1,0 +1,15 @@
+# Python dependencies for the Campus Customs back office.
+#   python3 -m pip install -r requirements.txt
+
+# The MCP server. Must be the standalone package: MCP SDK v2 renamed its own
+# bundled FastMCP class to MCPServer, so `mcp.server.fastmcp` no longer resolves.
+fastmcp>=4.0
+
+# The agent team.
+pydantic-ai>=2.4
+openai>=1.0
+
+# The dashboard backend.
+fastapi>=0.110
+uvicorn>=0.29
+python-dotenv>=1.0
